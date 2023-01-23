@@ -14,17 +14,45 @@ let charX = 10
 let charY = 450
 
 
-
 let isMovingLeft = false
 let isMovingRight = false
 let isMovingUp= false
 let isMovingDown = false
 
+let animateId
+
+let ghosts = []
+
+
+
+class Ghost {
+  constructor(xPos, yPos, width, height) {
+    this.xPos = xPos
+    this.yPos = yPos
+    this.width = width
+    this.height = height
+    
+  }
+  draw() {
+    ctx.beginPath()
+    ctx.fillStyle = 'tomato'
+    this.yPos += 2
+    ctx.rect(this.xPos, this.yPos, this.width, this.height)
+    ctx.fill()
+    ctx.closePath()
+}
+}
 
 const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
   ctx.drawImage(charImg, charX, charY, charWidth, charHeight)
+
+  ghosts.forEach(ghost => {
+    ghost.draw()
+  })
+  ghosts = ghosts.filter(ghost => ghost.yPos < canvas.height)
+  // this removes the already came ghost.
 
   if (isMovingRight === true) { charX += 2};
   if (isMovingLeft === true) { charX -= 2} ;
@@ -44,7 +72,13 @@ const animate = () => {
   if (charY > canvas.height-charHeight) {
     charY = canvas.height-charHeight;
   }
-  requestAnimationFrame(animate)
+
+  if (animateId % 100 === 0) {
+    ghosts.push(new Ghost(canvas.width * Math.random(), -50, 50, 50))
+  }
+  console.log(ghosts)
+  console.log(animateId)
+  animateId = requestAnimationFrame(animate)
 }
 
 const startGame = () => {
