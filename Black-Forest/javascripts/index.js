@@ -10,6 +10,9 @@ charImg.src = './images/female1.png'
 const ghostImg = new Image()
 ghostImg.src = './images/ghost.png'
 
+const resourceImg = new Image ();
+resourceImg.src = "./images/logo.png"
+
 const charWidth = 160
 const charHeight = 200
 
@@ -26,7 +29,40 @@ let animateId
 let gameOver = false
 
 let ghosts = []
+let resources = []
 
+let score = 0
+
+
+class Resource {
+  constructor(xrPos, yrPos, rwidth, rheight) {
+    this.xrPos = xrPos
+    this.yrPos = yrPos
+    this.rwidth = rwidth
+    this.rheight = rheight
+    
+  }
+  rdraw() {
+
+    this.yrPos += 1
+    ctx.drawImage(resourceImg,this.xrPos, this.yrPos, this.rwidth, this.rheight)
+    ctx.fill()
+    }
+
+    //Make checkCollision better later.
+    checkRCollision() {
+      if (
+        charX < this.xrPos + this.rwidth &&
+        charX + charWidth > this.xrPos &&
+        charY < this.yrPos + this.rheight &&
+        charHeight + charY > this.yrPos
+      ) {
+         score+=10
+      }
+    }
+    
+    
+}
 
 
 class Ghost {
@@ -57,17 +93,29 @@ class Ghost {
     }
 }
 
+
 const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
   ctx.drawImage(charImg, charX, charY, charWidth, charHeight)
 
+  ctx.fillStyle = 'white'
+  ctx.font = "36px serif";
+  ctx.fillText(`Score: ${score}`, 1000, 30);
+  ctx.fill()
+  
   ghosts.forEach(ghost => {
     ghost.checkCollision()
     ghost.draw()
   })
   ghosts = ghosts.filter(ghost => ghost.yPos < canvas.height)
   // this removes the already came ghost.
+
+  
+  resources.forEach(resource => {
+    resource.checkRCollision()
+    resource.rdraw()
+  })
 
   if (isMovingRight === true) { charX += 2};
   if (isMovingLeft === true) { charX -= 2} ;
@@ -90,6 +138,7 @@ const animate = () => {
 
   if (animateId % 100 === 0) {
     ghosts.push(new Ghost(canvas.width * Math.random(), -50, 50, 50))
+    resources.push(new Resource(canvas.width * Math.random(), -50, 50, 50))
   }
   console.log(ghosts)
   console.log(animateId)
@@ -103,6 +152,7 @@ const animate = () => {
 
 const startGame = () => {
   document.querySelector('.game-intro').style.display = 'none'
+
   animate()
 }
 
