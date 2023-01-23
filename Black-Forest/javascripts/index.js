@@ -7,6 +7,9 @@ bgImg.src = './images/background.png'
 const charImg = new Image()
 charImg.src = './images/female1.png'
 
+const ghostImg = new Image()
+ghostImg.src = './images/ghost.png'
+
 const charWidth = 160
 const charHeight = 200
 
@@ -34,13 +37,11 @@ class Ghost {
     
   }
   draw() {
-    ctx.beginPath()
-    ctx.fillStyle = 'tomato'
+
     this.yPos += 2
-    ctx.rect(this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(ghostImg,this.xPos, this.yPos, this.width, this.height)
     ctx.fill()
-    ctx.closePath()
-}
+    }
 }
 
 const animate = () => {
