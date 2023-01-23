@@ -23,6 +23,7 @@ let isMovingUp= false
 let isMovingDown = false
 
 let animateId
+let gameOver = false
 
 let ghosts = []
 
@@ -42,6 +43,18 @@ class Ghost {
     ctx.drawImage(ghostImg,this.xPos, this.yPos, this.width, this.height)
     ctx.fill()
     }
+
+    //Make checkCollision better later.
+    checkCollision() {
+      if (
+        charX < this.xPos + this.width &&
+        charX + charWidth > this.xPos &&
+        charY < this.yPos + this.height &&
+        charHeight + charY > this.yPos
+      ) {
+        gameOver = true
+      }
+    }
 }
 
 const animate = () => {
@@ -50,6 +63,7 @@ const animate = () => {
   ctx.drawImage(charImg, charX, charY, charWidth, charHeight)
 
   ghosts.forEach(ghost => {
+    ghost.checkCollision()
     ghost.draw()
   })
   ghosts = ghosts.filter(ghost => ghost.yPos < canvas.height)
@@ -79,7 +93,11 @@ const animate = () => {
   }
   console.log(ghosts)
   console.log(animateId)
-  animateId = requestAnimationFrame(animate)
+  if (gameOver) {
+    cancelAnimationFrame(animateId)
+  } else {
+    animateId = requestAnimationFrame(animate)
+  }
 }
 
 const startGame = () => {
