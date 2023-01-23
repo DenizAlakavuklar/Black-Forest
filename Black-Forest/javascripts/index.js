@@ -95,6 +95,7 @@ const animate = () => {
   console.log(animateId)
   if (gameOver) {
     cancelAnimationFrame(animateId)
+    alert("GAME OVER")
   } else {
     animateId = requestAnimationFrame(animate)
   }
