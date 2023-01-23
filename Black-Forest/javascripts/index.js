@@ -30,6 +30,20 @@ const animate = () => {
   if (isMovingLeft === true) { charX -= 2} ;
   if (isMovingUp === true) { charY -= 2};
   if (isMovingDown === true) { charY += 2} ;
+
+  if (charX <= 0) {
+    charX = 0;
+  }
+  if (charX > canvas.width-charWidth) {
+    charX = canvas.width-charWidth;
+  }
+
+  if (charY <= 0) {
+    charY = 110;
+  }
+  if (charY > canvas.height-charHeight) {
+    charY = canvas.height-charHeight;
+  }
   requestAnimationFrame(animate)
 }
 
