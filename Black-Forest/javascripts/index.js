@@ -25,11 +25,11 @@ let resource2ImgHeight = 80
 let resource3ImgWidth = 80
 let resource3ImgHeight = 80
 
-const ghostImgWidth = 120
-const ghostImgHeight = 100
+const ghostImgWidth = 30
+const ghostImgHeight = 60
 
 
-const charWidth = 100
+const charWidth = 80
 const charHeight = 200
 
 let charX = 10
@@ -95,9 +95,9 @@ class Ghost {
   //Make checkCollision better later.
   checkCollision() {
     if (
-      charX < this.xPos + this.width &&
-      charX + charWidth > this.xPos &&
-      charY < this.yPos + this.height &&
+      charX-10 < this.xPos + ghostImgWidth+10 &&
+      charX + charWidth-20 > this.xPos &&
+      charY < this.yPos + ghostImgHeight-30 &&
       charHeight + charY > this.yPos
     ) {
       gameOver = true
