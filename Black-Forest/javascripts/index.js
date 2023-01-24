@@ -5,7 +5,7 @@ const bgImg = new Image()
 bgImg.src = './images/background.png'
 
 const charImg = new Image()
-charImg.src = './images/female1.png'
+charImg.src = './images/char1.png'
 
 const ghostImg = new Image()
 ghostImg.src = './images/ghost.png'
@@ -25,8 +25,11 @@ let resource2ImgHeight = 80
 let resource3ImgWidth = 80
 let resource3ImgHeight = 80
 
+const ghostImgWidth = 120
+const ghostImgHeight = 100
 
-const charWidth = 160
+
+const charWidth = 100
 const charHeight = 200
 
 let charX = 10
@@ -85,7 +88,7 @@ class Ghost {
   draw() {
 
     this.yPos += 2
-    ctx.drawImage(ghostImg, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(ghostImg, this.xPos, this.yPos, ghostImgWidth, ghostImgHeight)
     ctx.fill()
   }
 
