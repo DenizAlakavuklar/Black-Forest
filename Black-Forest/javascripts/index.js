@@ -1,6 +1,11 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
+//audiosfiles
+let audioGameIntro= new Audio('./audio/night-forest.wav')
+audioGameIntro.volume = 0.03
+
+
 const bgImg = new Image()
 bgImg.src = './images/background.png'
 
@@ -117,6 +122,8 @@ const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
   ctx.drawImage(charImg, charX, charY, charWidth, charHeight)
+
+  audioGameIntro.play()
 
   ctx.fillStyle = 'white'
   ctx.font = "36px serif";
