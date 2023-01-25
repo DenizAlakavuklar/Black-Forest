@@ -34,11 +34,25 @@ body {
     margin-bottom: 20px;
   }
   
-  #game-board {
+  .game-board {
       float: left;
       padding: 20px 0px;
   }
 
-  
+  .game-over {
+    float: left;
+    padding: 0% 10%;
+    display: flexbox;
+    
+}
+#gameOverTitle {
+  font-size: 50px;
+  font-family: "Verdana";
+  color:white;
+  position: absolute;
+  top: 60px;
+  left: 200px;
+ 
+}
   
   

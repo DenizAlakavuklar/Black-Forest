@@ -28,7 +28,6 @@ let resource3ImgHeight = 80
 const ghostImgWidth = 30
 const ghostImgHeight = 60
 
-
 const charWidth = 80
 const charHeight = 200
 
@@ -75,8 +74,6 @@ class Resource {
     }
   }
 }
-
-
 class Ghost {
   constructor(xPos, yPos, width, height) {
     this.xPos = xPos
@@ -105,7 +102,6 @@ class Ghost {
   }
 }
 
-
 const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
@@ -126,7 +122,6 @@ const animate = () => {
  
   resources.forEach(resource => {
     resource.pickUpResource()
-   //resources.splice (resources[resource],1)
     resource.drawResource()
   })
 
@@ -159,6 +154,9 @@ const animate = () => {
   if (gameOver) {
     cancelAnimationFrame(animateId)
     alert("GAME OVER")
+  document.querySelector('.game-intro').style.display = 'none'
+  document.querySelector('.game-board').style.display ='none'
+  document.querySelector('.game-over').style.display ='block'
   } else {
     animateId = requestAnimationFrame(animate)
   }
@@ -166,13 +164,39 @@ const animate = () => {
 
 const startGame = () => {
   document.querySelector('.game-intro').style.display = 'none'
+  document.querySelector('.game-board').style.display ='block'
+  document.querySelector('.game-over').style.display ='none'
 
   animate()
 }
 
+const reStartGame = () => {
+  document.querySelector('.game-intro').style.display = 'none'
+  document.querySelector('.game-board').style.display ='block'
+  document.querySelector('.game-over').style.display ='none'
+
+   //gameOver = false
+   //animateId = 0
+   charX = 10
+   charY = 450
+   score = 0
+   ghosts = [
+    {xPos: 50, yPos:-50}
+   ]
+   //animateId = requestAnimationFrame(animate)
+   animate()
+}
+
 window.addEventListener('load', () => {
+  document.querySelector('.game-intro').style.display = 'block'
+  document.querySelector('.game-board').style.display ='none'
+  document.querySelector('.game-over').style.display ='none'
+
   document.getElementById('start-button').onclick = () => {
     startGame()
+  }
+  document.getElementById('restart-button').onclick = () => {
+    reStartGame()
   }
   document.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft') {

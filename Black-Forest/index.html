@@ -12,19 +12,30 @@
 <body>
   <div class="game-intro">
     <img src="./images/background.png" alt="" class="logo-img" />
-    <br />
+    <br /> <!-- line break -->
     <button id="start-button">Start Game</button>
     <p>Use all arrows to control the direction of your character! </p>
     <p>I will update the icon later! :)</p>
     <img src="./images/arrows.png" alt="" class="arrows-img" />
   </div>
 
-  <div id="game-board">
-  
+  <div class="game-board">
+
     <canvas id="canvas" width="1200" height="700"></canvas>
   </div>
-   
- 
+
+  <div class = "game-over">
+    <section class='gameOverScreen'>
+    <h1 id='gameOverTitle'>GAME OVER</h1>
+        <img src="./images/background.png" alt="" class="logo-img" />
+        <br />
+  <button id = "restart-button"> Restart Game</button>
+  
+<p>Press the button to restart! </p>
+</section>
+</div> 
+
+
   <script type="text/javascript" src="javascripts/index.js"></script>
 </body>
 
