@@ -31,20 +31,32 @@ const ghostImgHeight = 60
 const charWidth = 80
 const charHeight = 200
 
-let charX = 10
-let charY = 450
-
 let isMovingLeft = false
 let isMovingRight = false
 let isMovingUp = false
 let isMovingDown = false
 
-let animateId
 let gameOver = false
 
 let ghosts = []
 let resources = []
 let score = 0
+let charX = 10
+let charY = 450
+let animateId
+
+function init() {
+  ghosts = []
+  resources = []
+  score = 0
+  charX = 10
+  charY = 450
+  animateId
+  isMovingLeft = false
+  isMovingRight = false
+  isMovingUp = false
+  isMovingDown = false
+}
 
 class Resource {
   constructor(xrPos, yrPos, rwidth, rheight) {
@@ -62,15 +74,14 @@ class Resource {
   pickUpResource() {
     if (
       charX < this.xrPos + this.rwidth &&
-      charX + charWidth >this.xrPos &&
+      charX + charWidth > this.xrPos &&
       charY < this.yrPos + this.rheight &&
       charHeight + charY > this.yrPos
-    )
-     {
+    ) {
       gameOver = false;
       score += 20;
-      resources.splice (resources[this],1)
-      
+      resources.splice(resources[this], 1)
+
     }
   }
 }
@@ -92,9 +103,9 @@ class Ghost {
   //Make checkCollision better later.
   checkCollision() {
     if (
-      charX-10 < this.xPos + ghostImgWidth+10 &&
-      charX + charWidth-20 > this.xPos &&
-      charY < this.yPos + ghostImgHeight-30 &&
+      charX - 10 < this.xPos + ghostImgWidth + 10 &&
+      charX + charWidth - 20 > this.xPos &&
+      charY < this.yPos + ghostImgHeight - 30 &&
       charHeight + charY > this.yPos
     ) {
       gameOver = true
@@ -119,7 +130,6 @@ const animate = () => {
   ghosts = ghosts.filter(ghost => ghost.yPos < canvas.height)
   // this removes the already came ghost.
 
- 
   resources.forEach(resource => {
     resource.pickUpResource()
     resource.drawResource()
@@ -154,9 +164,9 @@ const animate = () => {
   if (gameOver) {
     cancelAnimationFrame(animateId)
     alert("GAME OVER")
-  document.querySelector('.game-intro').style.display = 'none'
-  document.querySelector('.game-board').style.display ='none'
-  document.querySelector('.game-over').style.display ='block'
+    document.querySelector('.game-intro').style.display = 'none'
+    document.querySelector('.game-board').style.display = 'none'
+    document.querySelector('.game-over').style.display = 'block'
   } else {
     animateId = requestAnimationFrame(animate)
   }
@@ -164,39 +174,29 @@ const animate = () => {
 
 const startGame = () => {
   document.querySelector('.game-intro').style.display = 'none'
-  document.querySelector('.game-board').style.display ='block'
-  document.querySelector('.game-over').style.display ='none'
+  document.querySelector('.game-board').style.display = 'block'
+  document.querySelector('.game-over').style.display = 'none'
 
   animate()
 }
 
-const reStartGame = () => {
-  document.querySelector('.game-intro').style.display = 'none'
-  document.querySelector('.game-board').style.display ='block'
-  document.querySelector('.game-over').style.display ='none'
-
-   //gameOver = false
-   //animateId = 0
-   charX = 10
-   charY = 450
-   score = 0
-   ghosts = [
-    {xPos: 50, yPos:-50}
-   ]
-   //animateId = requestAnimationFrame(animate)
-   animate()
-}
-
 window.addEventListener('load', () => {
   document.querySelector('.game-intro').style.display = 'block'
-  document.querySelector('.game-board').style.display ='none'
-  document.querySelector('.game-over').style.display ='none'
+  document.querySelector('.game-board').style.display = 'none'
+  document.querySelector('.game-over').style.display = 'none'
 
   document.getElementById('start-button').onclick = () => {
     startGame()
   }
   document.getElementById('restart-button').onclick = () => {
-    reStartGame()
+
+    document.querySelector('.game-intro').style.display = 'none'
+    document.querySelector('.game-board').style.display = 'block'
+    document.querySelector('.game-over').style.display = 'none'
+    gameOver = false
+    init()
+    animate()
+
   }
   document.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft') {
@@ -229,3 +229,4 @@ window.addEventListener('load', () => {
   })
 
 })
+
