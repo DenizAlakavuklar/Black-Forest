@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 //audiosfiles
-let audioGameIntro= new Audio('./audio/night-forest.wav')
+let audioGameIntro = new Audio('./audio/night-forest.wav')
 audioGameIntro.volume = 0.03
 
 
