@@ -6,6 +6,10 @@ let audioGameIntro = new Audio('./audio/night-forest.wav')
 audioGameIntro.volume = 0.03
 let eatingSound = new Audio('./audio/eatingSound.wav')
 eatingSound.volume = 0.10
+let gameOverSound = new Audio('./audio/gameOver.wav')
+gameOverSound.volume = 0.5
+let winSound = new Audio('./audio/winSound.wav')
+winSound.volume = 0.5
 
 // IMAGES
 const bgImg = new Image()
@@ -100,6 +104,7 @@ class Ghost {
       charHeight + charY > this.yPos
     ) {
       gameOver = true
+      
     }
   }
 }
@@ -158,6 +163,7 @@ const animate = () => {
   if (gameOver) {
     cancelAnimationFrame(animateId)
     audioGameIntro.pause()
+    gameOverSound.play()
     alert("GAME OVER")
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
@@ -167,10 +173,11 @@ const animate = () => {
     animateId = requestAnimationFrame(animate)
   }
 
-  if (score === 500) {
-    console.log (x)
+  if (score === 200) {
     cancelAnimationFrame(animateId)
-    alert("WIN")
+    audioGameIntro.pause()
+    winSound.play()
+    alert("You win the game!")
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'none'
