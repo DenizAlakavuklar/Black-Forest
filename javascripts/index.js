@@ -4,6 +4,8 @@ const ctx = canvas.getContext('2d')
 //audiosfiles
 let audioGameIntro = new Audio('./audio/night-forest.wav')
 audioGameIntro.volume = 0.03
+let eatingSound = new Audio('./audio/eatingSound.wav')
+eatingSound.volume = 0.10
 
 // IMAGES
 const bgImg = new Image()
@@ -71,6 +73,7 @@ class Resource {
       charHeight + charY > this.yrPos
     ) {
       gameOver = false;
+      eatingSound.play()
       score += 20;
       resources.splice(resources[this], 1)
     }
