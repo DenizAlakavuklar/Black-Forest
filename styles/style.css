@@ -1,58 +1,73 @@
 body {
-    padding: 0;
-    text-align: center;
-  }
-  
-  .game-intro {
-    float: left;
-    padding: 0% 10%;
-  }
-  
-  .game-intro p {
-    font-size: 18px;
-    font-family: "Verdana"
-  }
-  
-  .logo-img {
-    width: 450px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .arrows-img {
-    width: 150px;
-  }
-  
-  body button {
-    font-size: 20px;
-    background-color: rgb(25, 25, 90);
-    color: #fff;
-    padding: 10px 30px;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .game-board {
-      float: left;
-      padding: 20px 0px;
-  }
-
-  .game-over {
-    float: left;
-    padding: 0% 10%;
-    display: flexbox;
-    
+  padding: 0;
+  text-align: center;
 }
+
+.game-intro {
+  float: center;
+  padding: 20px 0px;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana"
+}
+
+.logo-img {
+  width: 450px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
+  font-size: 20px;
+  background-color: rgb(25, 25, 90);
+  color: #fff;
+  padding: 10px 30px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.game-board {
+  float: center;
+  padding: 20px 0px;
+}
+
+.game-over {
+  display: flexbox;
+  justify-content: center;
+  padding: 20px 0px;
+
+}
+
+.game-win {
+  display: flexbox;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
 #gameOverTitle {
-  font-size: 50px;
+  font-size: 30px;
   font-family: "Verdana";
-  color:white;
-  position: absolute;
+  color:  rgb(25, 25, 90);
+  display: flexbox;
+  justify-content: center;
   top: 60px;
   left: 200px;
- 
 }
-  
-  
+
+#gameWinTitle {
+  font-size: 30px;
+  font-family: "Verdana";
+  color: rgb(25, 25, 90);
+  display: flexbox;
+  justify-content: center;
+  top: 60px;
+  left: 400px;
+}

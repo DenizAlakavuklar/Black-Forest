@@ -160,6 +160,7 @@ const animate = () => {
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'block'
+    document.querySelector('.game-win').style.display = 'none'
   } else {
     animateId = requestAnimationFrame(animate)
   }
@@ -168,8 +169,10 @@ const animate = () => {
     
     cancelAnimationFrame(animateId)
     alert("WIN")
-    document.querySelector('.game-intro').style.display = 'block'
+    document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
+    document.querySelector('.game-over').style.display = 'none'
+    document.querySelector('.game-win').style.display = 'block'
     
   }
 }
@@ -178,6 +181,7 @@ const startGame = () => {
   document.querySelector('.game-intro').style.display = 'none'
   document.querySelector('.game-board').style.display = 'block'
   document.querySelector('.game-over').style.display = 'none'
+  document.querySelector('.game-win').style.display = 'none'
 
   animate()
 }
@@ -186,6 +190,7 @@ window.addEventListener('load', () => {
   document.querySelector('.game-intro').style.display = 'block'
   document.querySelector('.game-board').style.display = 'none'
   document.querySelector('.game-over').style.display = 'none'
+  document.querySelector('.game-win').style.display = 'none'
 
   document.getElementById('start-button').onclick = () => {
     startGame()
@@ -196,10 +201,20 @@ window.addEventListener('load', () => {
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'block'
     document.querySelector('.game-over').style.display = 'none'
+    document.querySelector('.game-win').style.display = 'none'
     gameOver = false
     init()
     animate()
+  }
+  document.getElementById('replay-button').onclick = () => {
 
+    document.querySelector('.game-intro').style.display = 'none'
+    document.querySelector('.game-board').style.display = 'block'
+    document.querySelector('.game-over').style.display = 'none'
+    document.querySelector('.game-win').style.display = 'none'
+    gameOver = false
+    init()
+    animate()
   }
   document.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft') {
