@@ -152,7 +152,6 @@ const animate = () => {
     resources.push(new Resource(canvas.width * Math.random(), canvas.height * Math.random(), 50, 50))
     setInterval(Resource,5000)
   }
-
   if (gameOver) {
     cancelAnimationFrame(animateId)
     audioGameIntro.pause()
@@ -166,7 +165,7 @@ const animate = () => {
   }
 
   if (score === 500) {
-    
+    console.log (x)
     cancelAnimationFrame(animateId)
     alert("WIN")
     document.querySelector('.game-intro').style.display = 'none'
