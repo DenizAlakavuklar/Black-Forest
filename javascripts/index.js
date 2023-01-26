@@ -123,8 +123,8 @@ const animate = () => {
   resources.forEach(resource => {
     resource.pickUpResource()
     resource.drawResource()
-  })
-
+     })
+  
   if (isMovingRight === true) { charX += 2 };
   if (isMovingLeft === true) { charX -= 2 };
   if (isMovingUp === true) { charY -= 2 };
@@ -146,9 +146,13 @@ const animate = () => {
 
   if (animateId % 100 === 0) {
     ghosts.push(new Ghost(canvas.width * Math.random(), -50, 50, 50))
-    resources.push(new Resource(canvas.width * Math.random(), canvas.height * Math.random(), 50, 50))
+  
   }
- 
+  if (animateId % 200 === 0) {
+    resources.push(new Resource(canvas.width * Math.random(), canvas.height * Math.random(), 50, 50))
+    setInterval(Resource,5000)
+  }
+
   if (gameOver) {
     cancelAnimationFrame(animateId)
     audioGameIntro.pause()
@@ -176,6 +180,7 @@ window.addEventListener('load', () => {
 
   document.getElementById('start-button').onclick = () => {
     startGame()
+  
   }
   document.getElementById('restart-button').onclick = () => {
 
