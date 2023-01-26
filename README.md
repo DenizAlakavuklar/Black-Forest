@@ -41,6 +41,6 @@ checkCollision()
 ## Links
 
 - [Trello Link](https://trello.com/b/7mV04nrw/black-forest)
-- [Slides Link](http://slides.com) xxxx
+- [Slides Link](https://github.com/DenizAlakavuklar/Black-Forest/blob/1f6e2cd1638bbbad20518d06dd661aa8dd9656a4/Black%20Forest%20Presentation.key)
 - [Github repository Link](https://github.com/DenizAlakavuklar/Black-Forest.git)
 - [Deployment Link](https://denizalakavuklar.github.io/Black-Forest/)
