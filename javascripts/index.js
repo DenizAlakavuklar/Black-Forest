@@ -133,7 +133,7 @@ const animate = () => {
     resource.drawResource()
   })
 
-  if (isMovingRight === true) { charX += 2 };
+  if (isMovingRight === true) { charX += 5 };
   if (isMovingLeft === true) { charX -= 2 };
   if (isMovingUp === true) { charY -= 2 };
   if (isMovingDown === true) { charY += 2 };
@@ -177,7 +177,7 @@ const animate = () => {
     cancelAnimationFrame(animateId)
     audioGameIntro.pause()
     winSound.play()
-    alert("You win the game!")
+    alert("You won the game!")
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'none'
