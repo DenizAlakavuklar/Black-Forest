@@ -1,27 +1,41 @@
 # Black Forest
 
 ## Description
-Brief description of the project
+Black Forest is a simple game and includes one type of woman character. She can move along the game board and try to collect food (a slice of pie) in order to get points. She needs to be careful about the ghosts falling down. Once she hits/touches one of the ghosts, the game is over.
 
 
 ## MVP
-_MVP definition here, list of minimum features_
+- Game includes one woman character,
+- She can move right, left, up and down with the help of arrows on the keyboard,
+- There are ghosts falling down randomly. If she touches one of the ghosts, the game is over,
+- There are foods appearing randomly. Whenever they are collected, the score increases.
+- There is a score counter on the right top corner of the game board.
 
 
 ## Backlog
-_List of features you might implement after the MVP_
+- Add audios,
 
 
-## Data structure
-_List of classes and methods_
+## Data structure (index.js)
+- init() - initial values (designed especialy for re-start)
+- a class for Resource - designed for foods (for now it is only pie) - includes functions below;
+drawResource()
+pickUpResource()
+- a class for Ghost - includes functions below;
+draw()
+checkCollision()
+- animate () - this animates the game
+- eventListeners
 
 
 ## States y States Transitions
-_List of states (views) of your game_
+- Game-Intro
+- Game-Board
+- Game-Over 
 
 
 ## Task
-_List of tasks in order of priority_
+?
 
 
 ## Links
@@ -29,4 +43,4 @@ _List of tasks in order of priority_
 - [Trello Link](https://trello.com/b/7mV04nrw/black-forest)
 - [Slides Link](http://slides.com) xxxx
 - [Github repository Link](https://github.com/DenizAlakavuklar/Black-Forest.git)
-- [Deployment Link](http://github.com)xxxxxx
+- [Deployment Link](https://denizalakavuklar.github.io/Black-Forest/)
