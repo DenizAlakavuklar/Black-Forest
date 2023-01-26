@@ -2,13 +2,13 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 //audiosfiles
-let audioGameIntro = new Audio('./audio/night-forest.wav')
+const audioGameIntro = new Audio('./audio/night-forest.wav')
 audioGameIntro.volume = 0.03
-let eatingSound = new Audio('./audio/eatingSound.wav')
+const eatingSound = new Audio('./audio/eatingSound.wav')
 eatingSound.volume = 0.10
-let gameOverSound = new Audio('./audio/gameOver.wav')
+const gameOverSound = new Audio('./audio/gameOver.wav')
 gameOverSound.volume = 0.5
-let winSound = new Audio('./audio/winSound.wav')
+const winSound = new Audio('./audio/winSound.wav')
 winSound.volume = 0.5
 
 // IMAGES
