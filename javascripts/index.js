@@ -5,30 +5,19 @@ const ctx = canvas.getContext('2d')
 let audioGameIntro = new Audio('./audio/night-forest.wav')
 audioGameIntro.volume = 0.03
 
-
+// IMAGES
 const bgImg = new Image()
 bgImg.src = './images/background.png'
-
 const charImg = new Image()
 charImg.src = './images/char1.png'
-
 const ghostImg = new Image()
 ghostImg.src = './images/ghost.png'
-
-// RESOURCE IMAGES
 const resource1Img = new Image()
 resource1Img.src = "./images/resource1.png"
-const resource2Img = new Image()
-resource2Img.src = "./images/resource2.png"
-const resource3Img = new Image()
-resource3Img.src = "./images/resource3.png"
 
-let resource1ImgWidth = 80
-let resource1ImgHeight = 80
-let resource2ImgWidth = 80
-let resource2ImgHeight = 80
-let resource3ImgWidth = 80
-let resource3ImgHeight = 80
+// VARIABLES
+const resource1ImgWidth = 80
+const resource1ImgHeight = 80
 
 const ghostImgWidth = 30
 const ghostImgHeight = 60
@@ -69,10 +58,8 @@ class Resource {
     this.yrPos = yrPos
     this.rwidth = rwidth
     this.rheight = rheight
-
   }
   drawResource() {
-
     ctx.drawImage(resource1Img, this.xrPos, this.yrPos, this.rwidth, this.rheight)
     ctx.fill()
   }
@@ -86,26 +73,22 @@ class Resource {
       gameOver = false;
       score += 20;
       resources.splice(resources[this], 1)
-
     }
   }
 }
+
 class Ghost {
   constructor(xPos, yPos, width, height) {
     this.xPos = xPos
     this.yPos = yPos
     this.width = width
     this.height = height
-
   }
   draw() {
-
     this.yPos += 2
     ctx.drawImage(ghostImg, this.xPos, this.yPos, ghostImgWidth, ghostImgHeight)
     ctx.fill()
   }
-
-  //Make checkCollision better later.
   checkCollision() {
     if (
       charX - 10 < this.xPos + ghostImgWidth + 10 &&
@@ -164,15 +147,12 @@ const animate = () => {
   if (animateId % 100 === 0) {
     ghosts.push(new Ghost(canvas.width * Math.random(), -50, 50, 50))
     resources.push(new Resource(canvas.width * Math.random(), canvas.height * Math.random(), 50, 50))
-
   }
-  console.log(ghosts)
-  console.log(animateId)
+ 
   if (gameOver) {
     cancelAnimationFrame(animateId)
     audioGameIntro.pause()
     alert("GAME OVER")
-   
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'block'
