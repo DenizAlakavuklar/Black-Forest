@@ -170,7 +170,9 @@ const animate = () => {
   console.log(animateId)
   if (gameOver) {
     cancelAnimationFrame(animateId)
+    audioGameIntro.pause()
     alert("GAME OVER")
+   
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'block'
