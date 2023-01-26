@@ -33,11 +33,6 @@ checkCollision()
 - Game-Board
 - Game-Over 
 
-
-## Task
-?
-
-
 ## Links
 
 - [Trello Link](https://trello.com/b/7mV04nrw/black-forest)
