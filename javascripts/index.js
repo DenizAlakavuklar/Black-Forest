@@ -71,8 +71,8 @@ class Resource {
   }
   pickUpResource() {
     if (
-      charX -10 < this.xrPos + this.rwidth +10  &&
-      charX + charWidth -20 > this.xrPos &&
+      charX - 10 < this.xrPos + this.rwidth + 10 &&
+      charX + charWidth - 20 > this.xrPos &&
       charY < this.yrPos + this.rheight &&
       charHeight + charY > this.yrPos
     ) {
@@ -104,7 +104,7 @@ class Ghost {
       charHeight + charY > this.yPos
     ) {
       gameOver = true
-      
+
     }
   }
 }
@@ -131,8 +131,8 @@ const animate = () => {
   resources.forEach(resource => {
     resource.pickUpResource()
     resource.drawResource()
-     })
-  
+  })
+
   if (isMovingRight === true) { charX += 2 };
   if (isMovingLeft === true) { charX -= 2 };
   if (isMovingUp === true) { charY -= 2 };
@@ -154,11 +154,11 @@ const animate = () => {
 
   if (animateId % 100 === 0) {
     ghosts.push(new Ghost(canvas.width * Math.random(), -50, 50, 50))
-  
+
   }
   if (animateId % 200 === 0) {
     resources.push(new Resource(canvas.width * Math.random(), canvas.height * Math.random(), 50, 50))
-    setInterval(Resource,5000)
+    setInterval(Resource, 5000)
   }
   if (gameOver) {
     cancelAnimationFrame(animateId)
@@ -182,7 +182,6 @@ const animate = () => {
     document.querySelector('.game-board').style.display = 'none'
     document.querySelector('.game-over').style.display = 'none'
     document.querySelector('.game-win').style.display = 'block'
-    
   }
 }
 
@@ -191,7 +190,6 @@ const startGame = () => {
   document.querySelector('.game-board').style.display = 'block'
   document.querySelector('.game-over').style.display = 'none'
   document.querySelector('.game-win').style.display = 'none'
-
   animate()
 }
 
@@ -200,13 +198,10 @@ window.addEventListener('load', () => {
   document.querySelector('.game-board').style.display = 'none'
   document.querySelector('.game-over').style.display = 'none'
   document.querySelector('.game-win').style.display = 'none'
-
   document.getElementById('start-button').onclick = () => {
     startGame()
-  
   }
   document.getElementById('restart-button').onclick = () => {
-
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'block'
     document.querySelector('.game-over').style.display = 'none'
@@ -216,7 +211,6 @@ window.addEventListener('load', () => {
     animate()
   }
   document.getElementById('replay-button').onclick = () => {
-
     document.querySelector('.game-intro').style.display = 'none'
     document.querySelector('.game-board').style.display = 'block'
     document.querySelector('.game-over').style.display = 'none'
@@ -254,6 +248,5 @@ window.addEventListener('load', () => {
       isMovingDown = false
     }
   })
-
 })
 
