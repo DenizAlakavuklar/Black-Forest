@@ -163,6 +163,15 @@ const animate = () => {
   } else {
     animateId = requestAnimationFrame(animate)
   }
+
+  if (score === 100) {
+    
+    cancelAnimationFrame(animateId)
+    alert("WIN")
+    document.querySelector('.game-intro').style.display = 'block'
+    document.querySelector('.game-board').style.display = 'none'
+    
+  }
 }
 
 const startGame = () => {
