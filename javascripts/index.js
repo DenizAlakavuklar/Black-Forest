@@ -133,7 +133,7 @@ const animate = () => {
     resource.drawResource()
   })
 
-  if (isMovingRight === true) { charX += 5 };
+  if (isMovingRight === true) { charX += 2 };
   if (isMovingLeft === true) { charX -= 2 };
   if (isMovingUp === true) { charY -= 2 };
   if (isMovingDown === true) { charY += 2 };
