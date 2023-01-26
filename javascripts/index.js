@@ -65,8 +65,8 @@ class Resource {
   }
   pickUpResource() {
     if (
-      charX < this.xrPos + this.rwidth &&
-      charX + charWidth > this.xrPos &&
+      charX -10 < this.xrPos + this.rwidth +10  &&
+      charX + charWidth -20 > this.xrPos &&
       charY < this.yrPos + this.rheight &&
       charHeight + charY > this.yrPos
     ) {
@@ -165,7 +165,7 @@ const animate = () => {
     animateId = requestAnimationFrame(animate)
   }
 
-  if (score === 100) {
+  if (score === 500) {
     
     cancelAnimationFrame(animateId)
     alert("WIN")
